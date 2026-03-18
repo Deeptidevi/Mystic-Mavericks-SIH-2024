@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: url('../assets/login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, rgba(66, 103, 178, 0.2), rgba(59, 89, 152, 0.2));
+  padding: 30px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+}
+
+.login-section, .driver-search-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.login-box, .search-box {
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.login-box:hover, .search-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.login-box input[type="text"], .login-box input[type="password"],
+.search-box input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.login-box input[type="text"]:focus, .login-box input[type="password"]:focus,
+.search-box input[type="text"]:focus {
+  border-color: #4267B2;
+  outline: none;
+  box-shadow: 0 0 10px rgba(66, 103, 178, 0.2);
+}
+
+.login-box input[type="button"], .search-box button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #4267B2, #3b5998);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-box input[type="button"]:hover, .search-box button:hover {
+  background: linear-gradient(135deg, #3b5998, #2d4373);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.driver-info {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.driver-box {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  margin: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.driver-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+  background: linear-gradient(135deg, #333, #222);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+.login-box h2, .login-box label {
+  color: #fff;
+}
+
+.login-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./1.1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Transform Your Transit Experience</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-image: url('./assets/RWrO0Rj1EpaaDVnuTIBHooTe0sqFD2eaFElFPllji6Gy69dTA.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .download-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: rgba(0,0,0,0.6);
+            padding: 20px;
+        }
+        .download-box {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(2.5px);
+        }
+        h1 {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .tagline {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        .download-btn {
+            background-color: #40b736;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .download-btn:hover {
+            background-color: #338f2a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        .play-store-logo {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .play-store-logo:hover {
+            transform: scale(1.05);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="download-container">
+        <div class="download-box">
+            <h1>Margchakra</h1>
+            <p class="tagline">Embark on a journey of effortless transit with our cutting-edge bus scheduling app!</p>
+            
+            <div class="download-options">
+                <a href="https://play.google.com/store" target="_blank">
+                    <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" class="play-store-logo">
+                </a>
+                <button onclick="window.location.href='#';" class="download-btn">
+                    <i class="fas fa-download"></i> Download Now <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

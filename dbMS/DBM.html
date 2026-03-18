@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./DBM.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+    <title>Delhi Bus Management System </title>
+</head>
+<body>
+    <!-- <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="#" class="logo">MargChakra</a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#tour">TOUR</a></li>
+          <li><a href="#package">PACKAGE</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+          <li><a href="#">BOOK TRIP</a></li>
+        </ul>
+         <div class="nav__btns">
+          <button class="btn">BOOK TRIP</button>
+        </div> -->
+      <!-- </nav> -->
+   <!---->
+    <h1>Delhi Bus Management System</h1>
+    <form id="bus-management-form">
+    <section id="user-info">
+        <input type="text" placeholder="Enter your name">
+        <br><br>
+       <!-- <label for="busNumber">Enter your bus number:</label> -->
+        <select id="busNumber" name="busNumber">
+            <option value="">Enter your bus number</option>
+            <option value="101">101</option>
+            <option value="102">102</option>
+            <option value="103">103</option>
+            <option value="104">104</option>
+            <option value="105">105</option>
+        </select>
+    </section>
+
+    <section id="arrival-location">
+        <h2>Arrival Location</h2>
+        <!-- <img src="arrival.pic" alt="'arrival image"> -->
+        <!-- <style>
+            #arrival-location {
+                position: relative;
+                padding: 20px;
+                background-image: url('arrival.pic');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: white;
+            }
+            #arrival-location::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+            #arrival-location > * {
+                position: relative;
+                z-index: 2;
+            }
+        </style> -->
+        <label for="arrivalLocation">Select Arrival Location:</label>
+        <select id="arrivalLocation" >
+            <option value="">Choose arrival location</option>
+            <option value="central_station">Central Station</option>
+            <option value="north_terminal">North Terminal</option>
+            <option value="south_terminal">South Terminal</option>
+            <option value="east_depot">East Depot</option>
+            <option value="west_depot">West Depot</option>
+        </select>
+        <br><br>
+        <label for="arrivalTime">Expected Arrival Time:</label>
+        <input type="text" id="arrivalTime" name="arrivalTime" placeholder="Enter time (e.g., 14:30)">
+    </section>
+
+
+    <section id="departure-location">
+        <h2>Departure Location</h2>
+        <label for="departureLocation">Select Departure Location:</label>
+        <select id="departureLocation" name="departureLocation">
+          <img src="departure.pic">
+            <option value="">Choose departure location</option>
+            <option value="central_station">Central Station</option>
+            <option value="north_terminal">North Terminal</option>
+            <option value="south_terminal">South Terminal</option>
+            <option value="east_depot">East Depot</option>
+            <option value="west_depot">West Depot</option>
+        </select>
+        <br><br>
+        <label for="departureTime">Expected Departure Time:</label>
+        <input type="text" id="departureTime" name="departureTime" placeholder="Enter time (e.g., 14:30)">
+    </section>
+    
+        <button type="submit" id="submit-btn">Submit</button>
+   
+</form>
+
+</body>
+</html>

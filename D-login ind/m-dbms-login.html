@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Scheduling System - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Bus Scheduling System - Admin Portal</h1>
+        </div>
+    </header>
+
+    <div class="login-section">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <form id="loginForm">
+                <label for="admin-username">Username</label>
+                <input type="text" id="admin-username" placeholder="Enter Admin Username" required>
+
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" placeholder="Enter Password" required>
+
+                <input type="button" value="Login" onclick="adminLogin()">
+            </form>
+        </div>
+    </div>
+
+    <div class="driver-search-section" id="driver-search-section" style="display: none;">
+        <h2>Search Driver Information</h2>
+        <div class="search-box">
+            <input type="text" id="driver-name" placeholder="Enter Driver Name" required>
+            <button onclick="searchDriver()">Search</button>
+        </div>
+        <div class="driver-info" id="driver-info">
+            <!-- Driver info will appear here after search -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Bus Scheduling System. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+       
+
+        function adminLogin() {
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+
+            // Simple login validation for admin
+            if(username === "admin" && password === "admin123") {
+                window.location.href="../dbMS/DBM.html";
+                
+            } else {
+                alert("Invalid admin credentials");
+            }
+        }
+
+      
+    </script>
+//     function validateLogin() {
+//     var username = document.getElementById("username").value;
+//     var password = document.getElementById("password").value;
+//     var errorMessage = document.getElementById("error-message");
+
+//     // Add your authentication logic here
+//     if (username === "12345" && password === "54321") {
+//         window.location.href="index.html";
+
+//     } else {
+//         errorMessage.innerHTML = "Invalid username or password";
+//     }
+// }
+</body>
+</html>

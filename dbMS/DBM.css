@@ -1,0 +1,293 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    padding-top: 80px;
+    background-image: linear-gradient(to right, #141e30, #243b55);
+    color: #ffffff;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('delhi-bus.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* Navigation styles */
+nav {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav__logo .logo {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav__menu__btn {
+    display: none;
+}
+
+.nav__links {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav__links li {
+    margin: 0 20px;
+}
+
+.nav__links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
+    position: relative;
+}
+
+.nav__links li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ffd700;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.nav__links li a:hover {
+    color: #ffd700;
+    transform: translateY(-2px);
+}
+
+.nav__links li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Main content styles */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+input[type="text"],
+select,
+input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+input[type="time"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* User info styles */
+#user-info input[type="text"] {
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Bus number select styles */
+#busNumber {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+/* Arrival and Departure location styles */
+#arrival-location,
+#departure-location {
+    background-color: rgba(79, 122, 151, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+#arrival-location:hover,
+#departure-location:hover {
+    background-color: rgba(79, 122, 151, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+#arrivalLocation,
+#departureLocation,
+#arrivalTime,
+#departureTime {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 12px 15px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+#arrivalLocation:focus,
+#departureLocation:focus,
+#arrivalTime:focus,
+#departureTime:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Submit button styles */
+#submit-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#submit-btn {
+    background-color: #ffd700;
+    color: #141e30;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#submit-btn:hover {
+    background-color: #ffec8b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#submit-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 0;
+    }
+
+    .nav__logo .logo {
+        font-size: 24px;
+    }
+
+    .nav__links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav__links li {
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    #submit-btn {
+        padding: 12px 30px;
+        font-size: 18px;
+    }
+}

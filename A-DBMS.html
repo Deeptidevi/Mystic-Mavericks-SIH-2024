@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Driver Schedule</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f2ff;
+      margin: 0;
+      padding: 20px;
+      /* background-image: url('./images2.jpg'); */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      color: #1a5f7a;
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    table, th, td {
+      border: 1px solid #b3d9ff;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #3399ff;
+      color: white;
+      text-transform: uppercase;
+    }
+    tr:nth-child(even) {
+      background-color: #f0f8ff;
+    }
+    tr:hover {
+      background-color: #e6f2ff;
+    }
+    .generate-button {
+      display: block;
+      margin: 30px auto;
+      padding: 15px 30px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .generate-button:hover {
+      background-color: #ff4757;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+    .generate-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+
+
+  <script>
+    // Firebase configuration (replace with your Firebase config)
+    const firebaseConfig = {
+  apiKey: "AIzaSyAj2tJIuXHY9ehWuQ2ok2reOVBtmClgcdU",
+  authDomain: "dtc-bus-scheduling-f469e.firebaseapp.com",
+  projectId: "dtc-bus-scheduling-f469e",
+  storageBucket: "dtc-bus-scheduling-f469e.appspot.com",
+  messagingSenderId: "260552662453",
+  appId: "1:260552662453:web:4cecf5705e21d1dd158dfc",
+  measurementId: "G-QPTEZZEBFV"
+};
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Bus Driver Schedule</h1>
+
+    <table id="driversTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Arrival Stop</th>
+          <th>Departure Stop</th>
+          <th>Start Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be populated here from Firebase -->
+      </tbody>
+    </table>
+
+    <button class="generate-button" onclick="generateStops()">Generate Stops and Times</button>
+  </div>
+
+  <script>
+    // Fetch data from Firestore and populate the table
+    function loadDrivers() {
+      const driversTable = document.getElementById("driversTable").getElementsByTagName('tbody')[0];
+      db.collection("drivers").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const driver = doc.data();
+          const row = driversTable.insertRow();
+          row.insertCell(0).textContent = driver.name;
+          row.insertCell(1).textContent = driver.id;
+          row.insertCell(2).textContent = driver.arrivalStop;
+          row.insertCell(3).textContent = driver.departureStop;
+          row.insertCell(4).textContent = driver.startTime;
+        });
+      });
+    }
+    
+    // Call loadDrivers() on page load
+    window.onload = loadDrivers;
+
+    // Function to generate random stops and start times for each driver
+    function generateStops() {
+      const stops = ["Connaught Place", "Nehru Place", "Karol Bagh", "Lajpat Nagar", "Chandni Chowk", "Rajouri Garden", "Saket", "Janakpuri", "Sarai Kale Khan", "Hauz Khas"];
+      
+      db.collection("drivers").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const randomArrivalStop = stops[Math.floor(Math.random() * stops.length)];
+          const randomDepartureStop = stops[Math.floor(Math.random() * stops.length)];
+          const randomTime = `${Math.floor(Math.random() * 12) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')} ${Math.random() > 0.5 ? 'AM' : 'PM'}`;
+          
+          // Update Firestore with the generated data
+          db.collection("drivers").doc(doc.id).update({
+            arrivalStop: randomArrivalStop,
+            departureStop: randomDepartureStop,
+            startTime: randomTime
+          }).then(() => {
+            // After updating Firestore, reload the table with updated data
+            location.reload();
+          });
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

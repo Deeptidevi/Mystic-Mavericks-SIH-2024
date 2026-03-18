@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback and Complaints</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+        }
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        #feedbackSection {
+            position: relative;
+            overflow: hidden;
+        }
+        #feedbackSection::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://unblast.com/wp-content/uploads/2020/10/Feedback-Vector-Illustration.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(1px);  /* 25% of 4px (common blur value) is 1px */
+        }
+        #feedbackSection::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+        }
+        #complaintsSection {
+            position: relative;
+            overflow: hidden;
+        }
+        #complaintsSection::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://img.freepik.com/free-vector/flat-design-person-making-complain_23-2148958465.jpg?w=740');
+            background-size: cover;
+            background-position: center;
+            filter: blur(1px);  /* 25% of 4px (common blur value) is 1px */
+        }
+        #complaintsSection::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+        }
+        .content {
+            position: absolute;
+            z-index: 1;
+        }
+        #feedbackContent {
+            top: 20%;
+            left: 35%;
+        }
+        #complaintsContent {
+            bottom: 20%;
+            right: 35%;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #2c3e50, #34495e, #4a5568);
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: glowButton 2s infinite alternate;
+        }
+        @keyframes glowButton {
+            from {
+                box-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000;
+            }
+            to {
+                box-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000;
+            }
+        }
+        button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            transition: transform 0.5s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #4a5568, #34495e, #2c3e50);
+        }
+        button:hover::before {
+            transform: scale(1);
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal.show {
+            opacity: 1;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+        textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .fancy-text {
+            position: absolute;
+            bottom: 40%;
+            left: 52%;
+            transform: translateX(-50%);
+            font-family: 'Tangerine', cursive;
+            font-size: 40px;
+            
+            font-weight: bold;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5),
+                         -2px -2px 4px rgba(255,255,255,0.5);
+            background: linear-gradient(45deg, #bf022b, #da0505);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 1;
+            border: 3px solid #f1c40f;
+            animation: glow 2s infinite alternate;
+        }
+        .fancy-text-complaints {
+            position: absolute;
+            top: 40%;
+            right: 52%;
+            transform: translateX(50%);
+            font-family: 'Tangerine', cursive;
+            font-size: 40px;
+            font-weight: bold;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5),
+                         -2px -2px 4px rgba(255,255,255,0.5);
+            background: linear-gradient(45deg, #bf022b, #da0505);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 1;
+            border: 3px solid #f1c40f;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #f1c40f, 0 0 10px #f1c40f, 0 0 15px #f1c40f, 0 0 20px #f1c40f;
+            }
+            to {
+                box-shadow: 0 0 10px #f1c40f, 0 0 20px #f1c40f, 0 0 30px #f1c40f, 0 0 40px #f1c40f;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="feedbackSection" class="section">
+        <div id="feedbackContent" class="content">
+            <button onclick="openModal('feedbackModal')">Submit Feedback</button>
+        </div>
+        <div class="fancy-text">We Value Your Suggestions!</div>
+    </div>
+    <div id="complaintsSection" class="section">
+        <div id="complaintsContent" class="content">
+            <button onclick="openModal('complaintsModal')">Register Complaint</button>
+        </div>
+        <div class="fancy-text-complaints">Your Complaints Matter to Us!</div>
+    </div>
+
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('feedbackModal')">&times;</span>
+            <h2>Submit Feedback</h2>
+            <textarea placeholder="Enter your feedback here" id="feedbackText"></textarea>
+            <button onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <div id="complaintsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('complaintsModal')">&times;</span>
+            <h2>Register Complaint</h2>
+            <textarea placeholder="Enter your complaint here" id="complaintText"></textarea>
+            <button onclick="submitComplaint()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "block";
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = "none", 300);
+        }
+
+        function submitFeedback() {
+            const feedbackText = document.getElementById('feedbackText').value;
+            if (feedbackText.trim() === '') {
+                alert("Please enter your feedback before submitting.");
+            } else {
+                alert("Thank you for your feedback!");
+                document.getElementById('feedbackText').value = '';
+                closeModal('feedbackModal');
+            }
+        }
+
+        function submitComplaint() {
+            const complaintText = document.getElementById('complaintText').value;
+            if (complaintText.trim() === '') {
+                alert("Please enter your complaint before submitting.");
+            } else {
+                alert("Your complaint has been registered. We'll look into it.");
+                document.getElementById('complaintText').value = '';
+                closeModal('complaintsModal');
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.className === "modal show") {
+                closeModal(event.target.id);
+            }
+        }
+    </script>
+</body>
+</html>

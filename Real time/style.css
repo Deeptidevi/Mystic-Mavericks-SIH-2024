@@ -1,0 +1,97 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bus-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.bus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    width: 320px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.bus:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.bus img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bus h2 {
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.status {
+    font-size: 1.3em;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: rgba(248, 249, 250, 0.2);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.status:hover {
+    background-color: rgba(233, 236, 239, 0.3);
+}
+
+.status span {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.status span#engine-101,
+.status span#engine-102,
+.status span#engine-103 {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.status span#mileage-101,
+.status span#mileage-102,
+.status span#mileage-103 {
+    color: #51cf66;
+    font-weight: bold;
+}
+
+.status span#fuel-101,
+.status span#fuel-102,
+.status span#fuel-103 {
+    color: #fcc419;
+    font-weight: bold;
+}
